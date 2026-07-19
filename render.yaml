@@ -6,7 +6,9 @@ services:
     branch: master
     dockerfilePath: ./docker/Dockerfile
     dockerContext: .
-    plan: starter
-    region: oregon
+    plan: standard        # Chromium/puppeteer build needs real CPU/RAM — starter (free) will likely OOM or time out
     healthCheckPath: /convert/
-    autoDeploy: true
+    autoDeployTrigger: commit
+    envVars:
+      - key: VITE_COMMIT_SHA
+        sync: false        # set manually per deploy, or drop this and let the build default
