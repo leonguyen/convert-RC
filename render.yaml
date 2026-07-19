@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: convert
+    runtime: docker
+    repo: https://github.com/p2r3/convert
+    branch: master
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    plan: starter
+    region: oregon
+    healthCheckPath: /convert/
+    autoDeploy: true
